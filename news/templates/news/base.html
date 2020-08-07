@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" target="_blank" href="{% static 'css/base.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hypernews</title>
+</head>
+<body>
+    {% block body %}
+    {% endblock %}
+    <a target="_blank" href="{% url 'articles-list' %}">News Main Page</a>
+</body>
+</html>

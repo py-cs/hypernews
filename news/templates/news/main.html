@@ -1,0 +1,26 @@
+{% extends "news/base.html" %}
+
+{% block body%}
+    <h2>Hyper news</h2>
+    <hr>
+    <form action="{% url 'articles-list' %}" method="post">
+        {% csrf_token %}
+        <p>Search:</p>
+        <input type="text" name="q" placeholder="i'm searching for...">
+        <button type="submit">Go</button>
+    </form>
+    <hr>
+    {% for article in articles %}
+        {% if article.created %}
+            {% if forloop.counter > 1 %}
+                </ul>
+            {% endif%}
+        <h4>{{ article.created }}</h4>
+        <ul>
+        {% endif %}
+        <li><a target="_blank" href="{% url 'article' article.link %}">{{ article.title }}</a></li>
+    {% endfor %}
+    </ul>
+    <a target="_blank" href="{% url 'news-create' %}">Create article</a>
+    <br>
+{% endblock %}
